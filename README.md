@@ -27,3 +27,28 @@ and just only once. (static 还可以用来定义静态的代码块,static 块�
 ### keywords final
 final is used to modify a class,so that it can no longer be inherited by other classes.final is used to modify a function,so that it can no longer be rewrite.final is very good keywords.we can avoid creating chaotic inheritance structures(当一个类被 final 修饰
 的时候,那么这个类就不能被继承了,当一个函数被final修饰的时候这个函数就不能被覆写了)
+
+## 2019-9-18 lesson 2 The Java's language taste 2 (Java 的语言品味2)
+The objectives of this lesson:
+1. grasp value types and reference types in java; (掌握Java中的值类型和引用类型)
+2. grasp the literals in Java;(掌握Java中的字面量和,了解其他语言中的字面量)
+3. grasp the value of the automatic disassembly box in Java;(掌握值Java中的自动拆装箱)
+
+Everything in java is object,all of function,variable,constant must defined in class,but when java was first designed
+,for performance reasons,it left a back door: primitive types(在Java
+中的任何东西都是对象,包括函数,变量,常量,他们都是必须要定义在一个类里面才行,这是很完美的设计,但是Java在考虑了性能的影响后留下了一道口子
+那就是primitive类型,我们在开发的过程中称之为值类型,或者按照字面量翻译为基础类型或者原始类型.
+primitive 类型包括有 **byte,char,long,int,float,double,boolean**,我们经常用到这些类型,并不陌生.Java在提供了这些类型以后为了任然保持强类型的要求也就是Java
+中的一切都是对象,又引入了他们的包装类,wrapper class)分别是:
+```
+byte -> Byte
+char -> Character
+short -> Short
+int -> Integer
+long -> Long
+float -> Float
+double -> Double
+boolean -> Boolean
+```
+this is means that,the same integer has two method in java,one is a value,one is an object;(也就是说在Java中同样的一个整数在Java
+中有两种表达方法,一个是值,一个是对象)
