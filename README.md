@@ -28,7 +28,7 @@ and just only once. (static 还可以用来定义静态的代码块,static 块�
 final is used to modify a class,so that it can no longer be inherited by other classes.final is used to modify a function,so that it can no longer be rewrite.final is very good keywords.we can avoid creating chaotic inheritance structures(当一个类被 final 修饰
 的时候,那么这个类就不能被继承了,当一个函数被final修饰的时候这个函数就不能被覆写了)
 
-## 2019-9-18 lesson 2 The Java's language taste 2 (Java 的语言品味2)
+## 2019-9-18 The Java's language taste 2 (Java 的语言品味2)
 The objectives of this lesson:
 1. grasp value types and reference types in java; (掌握Java中的值类型和引用类型)
 2. grasp the literals in Java;(掌握Java中的字面量和,了解其他语言中的字面量)
@@ -52,3 +52,19 @@ boolean -> Boolean
 ```
 this is means that,the same integer has two method in java,one is a value,one is an object;(也就是说在Java中同样的一个整数在Java
 中有两种表达方法,一个是值,一个是对象)
+
+## 2019-9-20  Design pattern in java: adaptation and decoration (Java 中的设计模式: 适配与装饰)
+firstly we have a question, input **((11 + 33) / 11 - 2 * 4) * (8 - 3) -20** and output value ?
+
+### input and output
+```java
+public class Main {
+    public static void main(String args[]) {
+        System.out.println("Hello World!");
+    }
+    public final static PrintStream out = null;  // in the source code, system.out is defined as static variable,
+}
+```
+all inputs are abstracted into input stream,and all outputs are abstracted into output stream in the java language.Take output stream as an example,
+
+
