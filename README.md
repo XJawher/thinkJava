@@ -66,5 +66,7 @@ public class Main {
 }
 ```
 all inputs are abstracted into input stream,and all outputs are abstracted into output stream in the java language.Take output stream as an example,
-
+it's subclasses,printStream can output bytes to the console,FileOutputStream can write bytes to the file
+,SocketOutputStream can write bytes to the network connection,and so on,they are all OutputStream, subclasses
+(以 outputStream 为例,它的几个子类,printStream 可以控制给控制台上输入字节,)
 
