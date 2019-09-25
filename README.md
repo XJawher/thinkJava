@@ -54,7 +54,7 @@ this is means that,the same integer has two method in java,one is a value,one is
 中有两种表达方法,一个是值,一个是对象)
 
 ## 2019-9-20  Design pattern in java: adaptation and decoration (Java 中的设计模式: 适配与装饰)
-firstly we have a question, input **((11 + 33) / 11 - 2 * 4) * (8 - 3) -20** and output value ?
+firstly we have a question, input **((11 + 33) / 11 - 2 * 4) * (8 - 3) -20** and output value is?
 
 ### input and output
 ```java
@@ -68,5 +68,29 @@ public class Main {
 all inputs are abstracted into input stream,and all outputs are abstracted into output stream in the java language.Take output stream as an example,
 it's subclasses,printStream can output bytes to the console,FileOutputStream can write bytes to the file
 ,SocketOutputStream can write bytes to the network connection,and so on,they are all OutputStream, subclasses
-(以 outputStream 为例,它的几个子类,printStream 可以控制给控制台上输入字节,)
+(以 outputStream 为例,它的几个子类,printStream 可以控制给控制台上输入字节,FileOutputStream 可以给文件里写入字节,SocketOutputStream 可以给网络上写入字节,这些都是 OutputStream 的子类)
+
+```java
+public class LessonTwo {
+
+    public static void lessonTwoInput(String args) {
+
+        System.out.println("hey, may I have your name, please? ");
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String inputValue = "";
+        try {
+            inputValue = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.print("hello, " + inputValue);
+    }
+}
+```
+
+`BufferedReader br = new BufferedReader(new InputStreamReader(System.in));` Look, a little line of code, including adapters and decorators.(看,小小的一行代码包括了适配器和装饰器)
+
+### Work : Implementing an adapter by self (自己实现一个适配器)
+implementing an adapter by self. it will changed standard put in to TokenStream(自己实现一个适配器,把标准的输入 System.in 转成 TokenStream)
+
 

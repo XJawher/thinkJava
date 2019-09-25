@@ -1,8 +1,8 @@
 package lesson.two;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Reader;
 
 /**
  * @author lipc
@@ -11,17 +11,16 @@ import java.io.Reader;
  * decorator modal,a design pattern that adds additional capabilities to objecks
  */
 public class LessonTwo {
+    public static void lessonTwoInput(String args) {
 
-	public static void lessonTwoInput(String args) {
-		char[] inputBuffer = new char[256];
-		System.out.println("hey, may I have your name, please? ");
-		int n = 0;
-		Reader r = new InputStreamReader(System.in);
-		try {
-			n = r.read(inputBuffer);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		System.out.println("hello, Mr. " + inputBuffer[0]);
-	}
+        System.out.println("hey, may I have your name, please? ");
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String inputValue = "";
+        try {
+            inputValue = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.print("hello, " + inputValue);
+    }
 }
