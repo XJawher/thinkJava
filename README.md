@@ -93,4 +93,9 @@ public class LessonTwo {
 ### Work : Implementing an adapter by self (自己实现一个适配器)
 implementing an adapter by self. it will changed standard put in to TokenStream(自己实现一个适配器,把标准的输入 System.in 转成 TokenStream)
 
+## 2019-9-25 lesson two data structure stack (数据结构 - 栈)
+the stack means data is LIFO (栈的意思就是数据后进先出)
+how we fake stack with java? 
+**Void** it's means function does not need  must return a value;
+
 
