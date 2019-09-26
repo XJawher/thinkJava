@@ -97,5 +97,112 @@ implementing an adapter by self. it will changed standard put in to TokenStream(
 the stack means data is LIFO (栈的意思就是数据后进先出)
 how we fake stack with java? 
 **Void** it's means function does not need  must return a value;
+first,let's give a simple example to describe the principle of the stack. 
+```java
+public class Main {
+
+	public static void main(String[] args) throws IOException {
+		byte[] buf = new byte[10];
+		int length = System.in.read(buf);
+
+		LessonTwoDataStructureStack s = new LessonTwoDataStructureStack(10);
+		System.out.println("length is : " + length);
+
+		for (int i = 0; i < length; i++) {
+			if (buf[i] == '(' || buf[i] == '[' || buf[i] == '{') {
+				s.push(buf[i]);
+				System.out.println(Arrays.toString(s.returnData()));
+			} else if (buf[i] == ')') {
+				if (s.getTop() == '(') {
+					s.pop();
+				} else {
+					System.out.println("1 unmatched");
+					System.exit(1);
+				}
+			} else if (buf[i] == ']') {
+				if (s.getTop() == '[') {
+					s.pop();
+				} else {
+					System.out.println("2 unmatched");
+					System.exit(1);
+				}
+			} else if (buf[i] == '}') {
+				if (s.getTop() == '{') {
+					s.pop();
+				} else {
+					System.out.println("3 unmatched");
+					System.exit(1);
+				}
+			}
+		}
+
+		if (!s.isEmpty()) {
+			System.out.println("4 unmatched");
+		} else {
+			System.out.println("all matched");
+		}
+	}
+}
+
+/**
+ * @author lipc
+ * simulate data structure of stack
+ */
+public class LessonTwoDataStructureStack {
+	private int[] data;
+	private int size;
+
+	/**
+	 * point to top of stack
+	 */
+	private int top = 0;
+
+	/**
+	 * @param size
+	 */
+	public LessonTwoDataStructureStack(int size) {
+		this.size = size;
+		this.data = new int[size];
+	}
+
+	/**
+	 * push num to stack;
+	 *
+	 * @param num data pushed into stack
+	 */
+	public void push(int num) {
+		data[top++] = num;
+	}
+
+	public int pop() {
+		if (top > 0) {
+			return data[--top];
+		} else {
+			return data[top];
+		}
+	}
+
+	public int getTop() {
+		if (top > 0) {
+			return data[top - 1];
+		} else {
+			return data[top];
+		}
+	}
+
+	public boolean isEmpty() {
+		return top == 0;
+	}
+
+	public int[] returnData() {
+		return data;
+	}
+}
+
+
+```
+
+
+
 
 
