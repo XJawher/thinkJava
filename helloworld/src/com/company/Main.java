@@ -1,3 +1,4 @@
+/*
 package com.company;
 
 import lesson.two.LessonTwoDataStructureStack;
@@ -8,6 +9,7 @@ import java.util.Arrays;
 /**
  * @author lipc
  */
+/*
 public class Main {
 
 	public static void main(String[] args) throws IOException {
@@ -52,3 +54,28 @@ public class Main {
 		}
 	}
 }
+*/
+package com.company;
+
+import lesson.two.PostfixExpression;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+/**
+ * @author lipc
+ */
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        String readInput;
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        readInput = br.readLine();
+        PostfixExpression pe = new PostfixExpression();
+        pe.consoleLog("this is args");
+        pe.getParameterFromMain(readInput);
+    }
+}
+
+
