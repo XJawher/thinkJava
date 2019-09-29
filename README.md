@@ -198,8 +198,6 @@ public class LessonTwoDataStructureStack {
 		return data;
 	}
 }
-
-
 ```
 
 use Postfix Expression to calculated the value of 34-56+*
