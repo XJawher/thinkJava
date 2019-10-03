@@ -202,6 +202,44 @@ public class LessonTwoDataStructureStack {
 
 use Postfix Expression to calculated the value of 34-56+*
 
+## In-depth understanding of function calls (深入的理解函数的掉用)
+Usually,we mean functions,which are functions that can exist independently in the global namespace
+The method is a function defined in the class, as a member of the class.
+Since the method in Java can not be defined independently from the class,there is actually no function in Java,only
+ methods.(而方法是定义在类中,作为类的一个成员的函数.由于在Java中方法不能脱离类进行单独的定义,所以在Java中是没有函数的,只是存在方法的)
+ 
+C/C++/Java function calls are similar (C/C++/Java的调用方式是很相近的)
+When a function is called,a small piece of memory corresponding to the called function is created on a specific
+ memory area,This small piece of memory is used to store local variables in the function and other information needed
+  at runtime.This small space name called a frame
+  (C/C++/Java的函数调用是比较类似的.调用一个函数的时候,会在一个特定的内存区域上,创建与被调用函数相对应的一小块内存.这一小块内存的作用是
+  为了存放函数在运行过程中所需要的局部变量和运行所需要的其他信息,这一小块的内存有个专门的名字叫做帧)
+  For example  
+```java
+public class Test {
+    public static void main(String args[]) {
+        int a = 1;
+        int b = 2;
+        foo(a, b); 
+    }   
+
+    public static void foo(int i, int j) {
+        i += 1;
+        j += 1;
+
+        bar(i, j); 
+        int t = i + j;
+    }   
+
+    public static void bar(int i, int j) {
+        i += 1;
+        j += 1;
+        return;
+    }   
+}
+```
+在main执行的时候会创建一个属于main的函数frame,这里面记录了mian中所定义的局部变量a,b
+
 
 
 
