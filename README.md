@@ -255,8 +255,44 @@ However,a condition must be added that the parameters are all basic data types,s
 You can think about it first,assuming that the parameter is a Java object.When the JVM calls the function,copy objects into the caller's stack frame.if the object is large,such as dozens of hundreds of member variables,then this consumption is very impressive.
 sometimes the return value can also be a large object. How to solve this problem.In fact from era of C language,there is a solution to this problem,that is heap and pointer.Java inherits this scheme,and the concept of heap still applies in Java,except that the pointer 
 becomes a reference.
-(大家可以先想一下如果参数是一个对象,JVM 在调用的时候如果把这个对象拷贝一份进入到调用者的栈帧里去,如果对象很大,有几百个变量,那这个消耗就是很可观了,有时候返回值还可能是一个很大的对象这时候.那么怎么解决这个问题呢?其实在C语言的时代针对这个问题就已经有了解决方案,那就是指针和堆.Java 继承了这一方案,堆的概念在) 
+(大家可以先想一下如果参数是一个对象,JVM 在调用的时候如果把这个对象拷贝一份进入到调用者的栈帧里去,如果对象很大,有几百个变量,那这个消耗就是很可观了,有时候返回值还可能是一个很大的对象这时候.那么怎么解决这个问题呢?其实在C语言的时代针对这个问题就已经有了解决方案,那就是指针和堆.Java 继承了这一方案,堆的概念在
+Java 任然是适用的,只不过是指针变成了引用 reference) 
 
+A heap is a separate memory space.When creating an object,we can put the real object into the heap,and only record the address of the object in the stack(堆 heap 是一个独立的内存空间.在创建对象的时候我们可以把真正的对象放到堆里,在栈里记录这个对象的引用地址就可以了,我们可以凭借这个
+地址就可以找到这个对象)
+```java
+public class Main {
+	public static void main(String args[]) {
+		A a = new A(1);
+		A b = new A(2);
+		swap(a, b);
+		System.out.println("a's value is " + a.value +", b's value is " + b.value);
+	}
 
+	public static void swap(A a, A b) {
+		int t = a.value;
+		a.value = b.value;
+		b.value = t;
+	}
+}
 
+class A {
+	public int value;
+	public A(int v) {
+		this.value = v;
+	}
+}
+```
+compared with yesterday's homework,we can see if the parameter type of the swap function is integer,the value of two numbers can not be exchanged.if the parameter type is a normal Java class,the value of the two objects can be exchanged.
+(对比昨天的作业就可以知道,当swap函数传入的参数是整数的时候就不能把参数的值进行交换,但是当参数是Java的对象的时候就是可以做交换的) 
+As you can see,in the main stack and swap stack,there is only a reference to the real object in the heap,that is an address,if the value in A2 and the value in A1 are exchanged in swap,then swap is finished,the value of A1 and value of A2 are exchanged in main
 
+## Recursive descent for expression evaluation (递归下降做表达式求值)
+What is recursion?
+The process in which a function calls itself directive or indirectly is called recursion and the cir-responding function is called as recursive function
+(递归就是用自己的定义来调用或者定义自己的方式就是递归)
+But recursion can not be terminated.To make the definition of recursion complete,these two conditions must be satisfied.(但是递归不能没有终止,要使的递归的定义变的完整,就必须满足这两个条件)
+>1.子问题需要和原始问题是同样的事情,且更为简单   
+>2.不能无限制的调用本身,必须要有个出口,化简为非递归的情况处理
+
+ 
