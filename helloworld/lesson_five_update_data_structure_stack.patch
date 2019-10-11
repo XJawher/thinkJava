@@ -1,0 +1,137 @@
+Index: README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- README.md	(revision 11af43134b834a584d31d300a00860f28462e4fd)
++++ README.md	(date 1570621704403)
+@@ -202,13 +202,14 @@
+ 
+ use Postfix Expression to calculated the value of 34-56+*
+ 
+-## In-depth understanding of function calls (深入的理解函数的掉用)
++## In-depth understanding of function calls (深入的理解函数的掉用 1)
+ Usually,we mean functions,which are functions that can exist independently in the global namespace
+ The method is a function defined in the class, as a member of the class.
+ Since the method in Java can not be defined independently from the class,there is actually no function in Java,only
+  methods.(而方法是定义在类中,作为类的一个成员的函数.由于在Java中方法不能脱离类进行单独的定义,所以在Java中是没有函数的,只是存在方法的)
+  
+ C/C++/Java function calls are similar (C/C++/Java的调用方式是很相近的)
++1. What happened when the call was made(调用时发生了什么) 
+ When a function is called,a small piece of memory corresponding to the called function is created on a specific
+  memory area,This small piece of memory is used to store local variables in the function and other information needed
+   at runtime.This small space name called a frame
+@@ -234,13 +235,27 @@
+     public static void bar(int i, int j) {
+         i += 1;
+         j += 1;
+-        return;
++        return i + j;
+     }   
+ }
+ ```
+-在main执行的时候会创建一个属于main的函数frame,这里面记录了mian中所定义的局部变量a,b
++When main is executed,a function frame belonging to main is created,in which local variables A and B is defined in main are recorded,then a calling frame is created when foo is called,and finally a calling frame is created when bar is called as main or foo(
++在main执行的时候会创建一个属于main的函数frame,这里面记录了main中所定义的局部变量a,b,然后在调用 foo 的时候同样的也是创建了一个调用帧,最后在调用 bar 的时候也是一样的去创建一个调用帧,)
++,When the functions is return value,the last call frame is destroyed when it returned,and the first created call frame is destroyed at last.this is similar to the stack,but on this stack every element is a frame(最后返回的时候是最后创建的调用帧最先被销毁,最初创建的最后被销毁
++这个是类似栈的一样,后进先出,只不过在这里栈里面的每个元素就是一个 frame)That is to say,the stack may refer to the memory used by the program when it runs.An element on the stack corresponds to a function called a frame.
+ 
++2. What happened when the call was returned(当函数返回的时候发生了什么?)
++The caller and the callee agree on a place,and then the callee puts the data in that place,and the caller goes to fetch the data (调用者和被调用者协商好一个地方,然后被调用者把数据放到那个地方,调用者去取这个数据就好了)
+ 
++## In-depth understanding of function calls 2 (深入的理解函数的掉用 2)
++
++**Stack and Heap**,we knew when a function is called and parameters are passed to a new stack frame,the parameters are copied from the caller's stack frame to callee's stack frame(当函数在调用的时候,往新的栈帧去传递参数的时候会把参数从调用者的栈帧里往被调用者的栈帧里复制一份)
++To modify parameters in the callee's stack frame can only modify the copy of the callee,but the data in caller's stack can not be changed.(在被调用者的栈帧里对参数进行修改,只能修改被调用者的栈帧里的数据,不能修改传入的参数的调用者的数据)
++However,a condition must be added that the parameters are all basic data types,such as int float double and so on.it's not sure for ordinary Java objects.(但是,必须要加一个前提条件那就是参数必须都是基础数据类型,比如 int float double等等,对于普通的 Java 对象就不成立了)
++You can think about it first,assuming that the parameter is a Java object.When the JVM calls the function,copy objects into the caller's stack frame.if the object is large,such as dozens of hundreds of member variables,then this consumption is very impressive.
++sometimes the return value can also be a large object. How to solve this problem.In fact from era of C language,there is a solution to this problem,that is heap and pointer.Java inherits this scheme,and the concept of heap still applies in Java,except that the pointer 
++becomes a reference.
++(大家可以先想一下如果参数是一个对象,JVM 在调用的时候如果把这个对象拷贝一份进入到调用者的栈帧里去,如果对象很大,有几百个变量,那这个消耗就是很可观了,有时候返回值还可能是一个很大的对象这时候.那么怎么解决这个问题呢?其实在C语言的时代针对这个问题就已经有了解决方案,那就是指针和堆.Java 继承了这一方案,堆的概念在) 
+ 
+ 
+ 
+Index: helloworld/src/com/company/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- helloworld/src/com/company/Main.java	(revision 11af43134b834a584d31d300a00860f28462e4fd)
++++ helloworld/src/com/company/Main.java	(date 1570581890228)
+@@ -57,16 +57,10 @@
+ */
+ package com.company;
+ 
+-import lesson.two.PostfixExpression;
+-
+-import java.io.BufferedReader;
+-import java.io.IOException;
+-import java.io.InputStreamReader;
+-
+ /**
+  * @author lipc
+  */
+-public class Main {
++/*public class Main {
+ 
+     public static void main(String[] args) throws IOException {
+         String readInput;
+@@ -76,6 +70,58 @@
+         pe.consoleLog("this is args");
+         pe.getParameterFromMain(readInput);
+     }
++}*/
++
++/*public class Main {
++	private static int a = 1;
++	private static int b = 2;
++
++	public static void main(String[] args) {
++		swap(a, b);
++		System.out.println("a is " + a + ", b is " + b);
++	}
++
++	private static void swap(int j, int i) {
++		a = i;
++		b = j;
++	}
++}*/
++
++/*public class Main {
++	public static void main(String args[]) {
++		int n = 10;
++		int t = fact(n);
++		System.out.println(t);
++	}
++
++	public static int fact(int n) {
++		if (n == 0) {
++			return 1;
++		} else {
++			return n * fact(n - 1);
++		}
++	}
++}*/
++
++public class Main {
++	public static void main(String args[]) {
++		A a = new A(1);
++		A b = new A(2);
++		swap(a, b);
++		System.out.println("a's value is " + a.value + ", b's value is " + b.value);
++	}
++
++	public static void swap(A a, A b) {
++		int t = a.value;
++		a.value = b.value;
++		b.value = t;
++	}
+ }
+ 
++class A {
++	public int value;
+ 
++	public A(int v) {
++		this.value = v;
++	}
++}
