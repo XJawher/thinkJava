@@ -308,5 +308,25 @@ if the steps to solve the problem are not related to the scale of the problem.th
 random access to arrays(解决一个规模为 n 的问题所花费的步骤如果是 n 的常数倍,我们就记录这个方法的复杂度是 O(n),例如给一个数组去找到这个数组
 去求解这个数组中的最大值,就需要遍历这个数组,如果数组的长度为 n,那么遍历数组的步骤就是 n,所以遍历数组的这个行为就是 O(n)的操作.同样的解决一个规模是
 n 的问题所花费的步骤如果是 n^2 的常倍数我们记录这个问题的复杂度是 O(n^2).例如冒泡排序方法.)
+**Linked list** (链表)
+let's we take look linked list
+```java
+class LinkNode {
+    public int data;
+    public LinkNode next;
+    public LinkNode (int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+```
+we have defined a link node class,in which there are two member variables,one is integer data,and the other is a reference
+to link node type;(我们定义了一个 LinkNode 的类,这个类里有两个成员变量,一个是整形的data,一个是指向 LinkNode 的类型引用)
+With this reference,we can string multiple LinkNodes together.example like this code 
+```
+LinkNode head = new LinkNOde(1);
+head.next = new LinkNode(2)
+```
+
 
  
