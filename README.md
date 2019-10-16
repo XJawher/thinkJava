@@ -295,4 +295,18 @@ But recursion can not be terminated.To make the definition of recursion complete
 >1.子问题需要和原始问题是同样的事情,且更为简单   
 >2.不能无限制的调用本身,必须要有个出口,化简为非递归的情况处理
 
+## Data structure 2 :linked list (数据结构二:链表)
+**Array**
+Random access is fast,but sequential is slow;(随机存取都很快,但是顺序就会比较慢)
+**Big-O notation**(大O记号)
+if the steps taken to solve a problem which a scale of n is a constant multiple of N,we will remember that the complexity 
+of this method is O(n).For example,to find maximum value of an array.you need to traverse the array.if the length of array 
+is n,then the step of traversing the array is n,so this is an O(n) operation;
+Similarly,if the steps taken to solve a problem with a scale of n is a constant multiple of n ^ 2,we will remember that 
+the complexity of this method is O(n^2).For example,bubble sorting.
+if the steps to solve the problem are not related to the scale of the problem.the time complexity is O(1),For example,
+random access to arrays(解决一个规模为 n 的问题所花费的步骤如果是 n 的常数倍,我们就记录这个方法的复杂度是 O(n),例如给一个数组去找到这个数组
+去求解这个数组中的最大值,就需要遍历这个数组,如果数组的长度为 n,那么遍历数组的步骤就是 n,所以遍历数组的这个行为就是 O(n)的操作.同样的解决一个规模是
+n 的问题所花费的步骤如果是 n^2 的常倍数我们记录这个问题的复杂度是 O(n^2).例如冒泡排序方法.)
+
  
