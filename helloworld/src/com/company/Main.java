@@ -108,10 +108,12 @@ import java.net.Socket;
 }*/
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 //        new Client();
 //        new Server();
-        new Client();
+//        new Client();
+        Server.test();
+        Client.test();
     }
 }
 
@@ -119,7 +121,11 @@ public class Main {
  * @author lipc
  */
 class Server {
-    public static void main(String[] args) throws IOException {
+    static void test() throws IOException {
+        main();
+    }
+
+    private static void main() throws IOException {
 
         ServerSocket ss = new ServerSocket(8080);
         Socket conn = ss.accept();
@@ -140,7 +146,12 @@ class Server {
 }
 
 class Client {
-    public static void main(String[] args) throws IOException {
+
+    static void test() throws IOException {
+        main();
+    }
+
+    private static void main() throws IOException {
         Socket conn = new Socket("127.0.0.1", 8080);
         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
