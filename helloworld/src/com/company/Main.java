@@ -57,6 +57,10 @@ public class Main {
 */
 package com.company;
 
+import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
+
 /**
  * @author lipc
  */
@@ -104,24 +108,56 @@ package com.company;
 }*/
 
 public class Main {
-	public static void main(String args[]) {
-		A a = new A(1);
-		A b = new A(2);
-		swap(a, b);
-		System.out.println("a's value is " + a.value + ", b's value is " + b.value);
-	}
-
-	public static void swap(A a, A b) {
-		int t = a.value;
-		a.value = b.value;
-		b.value = t;
-	}
+    public static void main(String[] args) {
+//        new Client();
+//        new Server();
+        new Client();
+    }
 }
 
-class A {
-	public int value;
+/**
+ * @author lipc
+ */
+class Server {
+    public static void main(String[] args) throws IOException {
 
-	public A(int v) {
-		this.value = v;
-	}
+        ServerSocket ss = new ServerSocket(8080);
+        Socket conn = ss.accept();
+        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+        String s = br.readLine();
+        while (s != null) {
+            System.out.println(s);
+            bw.write(s.toUpperCase() + "\n");
+            bw.flush();
+            s = br.readLine();
+        }
+        br.close();
+        bw.close();
+        conn.close();
+        System.out.println("this is Serve over");
+    }
+}
+
+class Client {
+    public static void main(String[] args) throws IOException {
+        Socket conn = new Socket("127.0.0.1", 8080);
+        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+        bw.write("hello\n");
+        bw.flush();
+        String s = br.readLine();
+        System.out.println(s);
+
+        bw.write("world\n");
+        bw.flush();
+        s = br.readLine();
+        System.out.println(s);
+
+
+        br.close();
+        bw.close();
+        conn.close();
+        System.out.println("this is Client over");
+    }
 }
