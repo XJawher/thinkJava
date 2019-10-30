@@ -57,26 +57,17 @@ public class Main {
 */
 package com.company;
 
+import lesson.fourth.LinkNode;
+
 import java.io.IOException;
-import java.io.PrintWriter;
 
 /**
  * @author lipc
  */
 public class Main {
     public static void main(String[] args) throws IOException {
-        String s = "Hello World";
-        try {
-            // create a new stream at specified file
-            PrintWriter pw = new PrintWriter(System.out);
-            // write the string in the file
-            pw.write(s);
-            // flush the writer
-            pw.flush();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-//        Server.test();
+        LinkNode head = new LinkNode(1);
+        head.next = new LinkNode(2);
+        System.out.println(head);
     }
-
 }
