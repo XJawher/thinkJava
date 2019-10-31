@@ -68,6 +68,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         LinkNode head = new LinkNode(1);
         head.next = new LinkNode(2);
-        System.out.println(head);
+        System.out.println(head.next.data);
+
     }
 }

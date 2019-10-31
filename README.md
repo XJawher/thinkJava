@@ -322,17 +322,14 @@ class LinkNode {
 ```
 we have defined a link node class,in which there are two member variables,one is integer data,and the other is a reference
 to link node type;(我们定义了一个 LinkNode 的类,这个类里有两个成员变量,一个是整形的data,一个是指向 LinkNode 的类型引用)
-With this reference,we can string multiple LinkNodes together.example like this code 
+With this reference,we can string multiple LinkNodes together.example like this code(通过这个引用,我们可以把更多的类串联起来) 
 ```
-LinkNode head = new LinkNOde(1);
+LinkNode head = new LinkNode(1);
 head.next = new LinkNode(2)
 ```
+the relationship of the two linkNode is as shown in the figure below
+![image](https://pic1.zhimg.com/80/v2-54b713a169bcc7a6ff259046c0325e5c_hd.png)
+The reference linkNode of head,it's data is 1,and its next is reference the next LinkNode,its reference data is 2,next
+domain is null.(head 所引用的那个 linkNode,其 data 值是 1,其 next 指向了下一个 linkNode,其 data 是 2,next 🌧 域是空的)
 
-```mermaid
-graph TD
-A[模块A] A[模块A] -->|A1| B(模块B)
-B --> C{判断条件C}
-C -->|条件C1| D[模块D]
-C -->|条件C2| E[模块E]
-C -->|条件C3| F[模块F]
-```
+**How to add a linkNode more(如何给链表再多增加一项)**
