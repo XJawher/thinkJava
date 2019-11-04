@@ -328,8 +328,30 @@ LinkNode head = new LinkNode(1);
 head.next = new LinkNode(2)
 ```
 the relationship of the two linkNode is as shown in the figure below
-![image](https://pic1.zhimg.com/80/v2-54b713a169bcc7a6ff259046c0325e5c_hd.png)
+![image is error connect bi hu](https://pic1.zhimg.com/80/v2-54b713a169bcc7a6ff259046c0325e5c_hd.png)
 The reference linkNode of head,it's data is 1,and its next is reference the next LinkNode,its reference data is 2,next
 domain is null.(head 所引用的那个 linkNode,其 data 值是 1,其 next 指向了下一个 linkNode,其 data 是 2,next 🌧 域是空的)
 
 **How to add a linkNode more(如何给链表再多增加一项)**
+What if i wanted to added a linked list item after the head and make the linked list look like the one in the image of the below?
+(如果我想在 head 之后增加一个链表项目,让这个链表变成了下图所示的样子,该怎么做呢?)
+![image is error connect bi hu](https://pic4.zhimg.com/80/v2-666c1e84419a80e1073567f2a502ebff_hd.png)
+这就是往链表中添加新元素,这时候把 data1 的next换成data3把data2变成data3的next就完成了链表的转换
+**Double link list(双向链表)**
+In fact,in engineering practice,when using a linked list,there is often a need to "query a previous node of a node." in order
+to speed up the progress,wo can actually modify the definition of LinkNode,and add a member variable to the pre-order node
+(实际上在工程实践中我们都是会有查询某个节点的前一个节点是什么节点的需求,为了加速求解这个问题,我们可以把之前的单链节点改造成双向链表,给他加上一个指向前序节点的变量)
+```java
+class DoubleLinkNode {
+    public int data;
+    public LinkNode next;
+    public LinkNode prev;
+
+    public LinkNode(int data) {
+        this.data = data;
+        this.next = null;
+        this.prev = null;
+    }
+}
+```
+![image is error connect bi hu](https://pic1.zhimg.com/80/v2-ab9f644fe57ebc65ae22263195f99728_hd.png)

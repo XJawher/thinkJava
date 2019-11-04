@@ -57,18 +57,31 @@ public class Main {
 */
 package com.company;
 
-import lesson.fourth.LinkNode;
+import lesson.fourth.DoubleLink;
 
 import java.io.IOException;
 
 /**
  * @author lipc
+ * link is like this firstNode => secondNode => thirdNode => fourthNode
  */
 public class Main {
     public static void main(String[] args) throws IOException {
-        LinkNode head = new LinkNode(1);
-        head.next = new LinkNode(2);
-        System.out.println(head.next.data);
+        DoubleLink firstNode = new DoubleLink("firstNode");
+        DoubleLink secondNode = new DoubleLink("secondNode");
+        DoubleLink thirdNode = new DoubleLink("thirdNode");
+        DoubleLink fourthNode = new DoubleLink("fourthNode");
 
+        firstNode.next = secondNode;
+        secondNode.next = thirdNode;
+        secondNode.previous = firstNode;
+        thirdNode.next = fourthNode;
+        thirdNode.previous = secondNode;
+        fourthNode.previous = thirdNode;
+
+        String queryIndex = DoubleLink.queryNode(secondNode);
+        System.out.println(queryIndex);
+        System.out.println(DoubleLink.queryNode(firstNode));
+        System.out.println(DoubleLink.queryNode(fourthNode));
     }
 }
