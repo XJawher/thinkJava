@@ -355,3 +355,13 @@ class DoubleLinkNode {
 }
 ```
 ![image is error connect bi hu](https://pic1.zhimg.com/80/v2-ab9f644fe57ebc65ae22263195f99728_hd.png)
+## Data structure(3): Queue(数据结构(3):队列)
+the queue is a data structure that features first in,first out(队列是一种数据结构,其特点是数据先进先出)
+**Unidirectional Queue(单向队列)**
+One-way queues are simple,you can only add elements to the end of the team and remove elements from the head of the team
+for example,queuing to buy tickets,newcomers can only behind the queue,the top talents can buy tickets,after the purchase,leave 
+the team.This process is a typical queue(单向的队列很简单,就是只能把元素从队尾插进去,只能从队首把对象移走,排队买票就是一个很典型的列子,只有
+当第一个买票的人付款结束了接下来的人才能购买,新来的用户只能排队尾等待前面的用户)
+**Two-way queue  Deque(双向队列)**
+If a queue's both head and tail are supported into the queue and out the queue,that's is two-way queue
+(如果一个队的头和尾都支持元素入队,出队,那么就称之为双向队列)

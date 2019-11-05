@@ -80,7 +80,7 @@ public class Main {
         fourthNode.previous = thirdNode;
 
         String queryIndex = DoubleLink.queryNode(secondNode);
-        System.out.println(queryIndex);
+        System.out.println(String.format("the query is %s", queryIndex));
         System.out.println(DoubleLink.queryNode(firstNode));
         System.out.println(DoubleLink.queryNode(fourthNode));
     }
