@@ -58,6 +58,7 @@ public class Main {
 package com.company;
 
 import lesson.fourth.DoubleLink;
+import lesson.fourth.Generic;
 
 import java.io.IOException;
 
@@ -83,5 +84,13 @@ public class Main {
         System.out.println(String.format("the query is %s", queryIndex));
         System.out.println(DoubleLink.queryNode(firstNode));
         System.out.println(DoubleLink.queryNode(fourthNode));
+
+        Generic<Integer> ci = new Generic<>(1);
+        System.out.println(ci.data);
+        System.out.println(ci.getClass().getName());
+
+        Generic<String> cs = new Generic<>("this is String data");
+        System.out.println(cs.getClass().getName());
+        System.out.println(cs.data);
     }
 }

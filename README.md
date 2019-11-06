@@ -365,3 +365,33 @@ the team.This process is a typical queue(单向的队列很简单,就是只能�
 **Two-way queue  Deque(双向队列)**
 If a queue's both head and tail are supported into the queue and out the queue,that's is two-way queue
 (如果一个队的头和尾都支持元素入队,出队,那么就称之为双向队列)
+
+## Data structure(4): Generic(数据结构四:泛型)
+由于 Java 是一个强类型的语言,因此对于每个方法传递的参数类型是确定的,但是我们想要一个公共的组件去处理一些可以复用的接收不同类型参数的方法,泛型就是为了
+处理这个问题而存在的.看下下面的代码
+```java
+public class Main {
+    public static void main(String[] args) throws IOException {
+        Generic<Integer> cint = new Generic<>(1);
+        System.out.println(cint.data);
+        System.out.println(cint.getClass().getName());
+
+        Generic<String> cstring = new Generic<>("this is String data");
+        System.out.println(cstring.getClass().getName());
+        System.out.println(cstring.data);
+    }
+}
+
+public class Generic<T> {
+    public T data;
+
+    public Generic(T data) {
+        this.data = data;
+    }
+
+    public T getData() {
+        return this.data;
+    }
+}
+```
+可以看出在 Generic 这个类中我们使用了一个类就可以传入不同类型的参数进行处理.
