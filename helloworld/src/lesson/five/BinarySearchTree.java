@@ -1,7 +1,10 @@
 package lesson.five;
 
+/**
+ * @author lipc
+ */
 public class BinarySearchTree<T extends Comparable<T>> {
-    public BinaryTree root;
+    private BinaryTree root;
 
     public boolean insert(T i) {
         if (root == null) {
