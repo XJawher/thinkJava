@@ -57,8 +57,8 @@ public class Main {
 */
 package com.company;
 
-import lesson.fourth.DoubleLink;
-import lesson.fourth.Generic;
+import lesson.five.BinarySearchTree;
+import lesson.five.BinaryTree;
 
 import java.io.IOException;
 
@@ -68,29 +68,14 @@ import java.io.IOException;
  */
 public class Main {
     public static void main(String[] args) throws IOException {
-        DoubleLink firstNode = new DoubleLink("firstNode");
-        DoubleLink secondNode = new DoubleLink("secondNode");
-        DoubleLink thirdNode = new DoubleLink("thirdNode");
-        DoubleLink fourthNode = new DoubleLink("fourthNode");
-
-        firstNode.next = secondNode;
-        secondNode.next = thirdNode;
-        secondNode.previous = firstNode;
-        thirdNode.next = fourthNode;
-        thirdNode.previous = secondNode;
-        fourthNode.previous = thirdNode;
-
-        String queryIndex = DoubleLink.queryNode(secondNode);
-        System.out.println(String.format("the query is %s", queryIndex));
-        System.out.println(DoubleLink.queryNode(firstNode));
-        System.out.println(DoubleLink.queryNode(fourthNode));
-
-        Generic<Integer> ci = new Generic<>(1);
-        System.out.println(ci.data);
-        System.out.println(ci.getClass().getName());
-
-        Generic<String> cs = new Generic<>("this is String data");
-        System.out.println(cs.getClass().getName());
-        System.out.println(cs.data);
+        BinaryTree a = new BinaryTree(1);
+        BinaryTree b = new BinaryTree(2);
+        BinaryTree c = new BinaryTree(3);
+        a.left = b;
+        a.right = c;
+        System.out.println(a.left.left);
+        BinarySearchTree lsInsert = new BinarySearchTree();
+        System.out.println(lsInsert.insert(1));
+        System.out.println(lsInsert.insert(6));
     }
 }
