@@ -395,3 +395,61 @@ public class Generic<T> {
 }
 ```
 可以看出在 Generic 这个类中我们使用了一个类就可以传入不同类型的参数进行处理.
+
+## Data structure(4): Containers(数据结构四:容器)
+Containers,as the name suggests,are the place to hold things,Our program often manages a large number of objects.For example
+in the school's information management system,each students's related information can be abstracted into an object;for example 
+
+## Data structure(5): Binary tree(数据结构5: 二叉树) 
+The data structure of the tree is the soul of the program,whether you can play the data structure of the tree smoothly can be 
+said to be the first hurdle for programmers.(树这种数据结构是程序的灵魂,也是一切程序的根基,总之能不能把树这种结构玩的溜可以说是程序员的第一道门槛)
+The most classic and basic example of this data structure is the binary tree.Mastering the binary tree is the cornerstone of
+learning other advanced data structure.so please make sure to read this section and write programs repeatedly.Really binary tree 
+is more important than you think...
+(树这种数据结构,最经典的最基础的就是二叉树,掌握好二叉树是学习其他高级数据结构的基石,所以请大家一定要反复的看这一节反复的写代码.真的二叉树比你想象中的还要重要的多)
+TreeMap in JDK is a kind of Map implemented with trees,but its implementation is a red-black tree.Although it is still a binary tree
+in nature.it must be regarded as a high-level data structure anyway.therefore i strongly recommend that you don't rush through the 
+source code of the JDK,before you fully grasp the binary tree and AVL tree. 
+(JDK中的 TreeMap 是一种用树实现的MAP,但是他的实现是红黑树,虽然他本质上也是一颗二叉树.但是无论如何都是一种高级数据了,我敢打赌90% 的程序员无法完整的写出红黑树
+不要说刹删除节点,就只是节点的插入就写不完整,所以我强烈建议大家在掌握了二叉树和AVL之前先不要着急去翻JDK的源码)
+
+**a binary tree is a tree structure,which is characterized in that each node has at most two subtrees,and the subtrees of the binary
+are divided into right and left,and their order can not be reversed arbitrarily(二叉树是一种数据结构,他的特点是每个节点至多有两颗子树,并且二叉树的
+子树是有左右之分的,而且他的次序是不能随意颠倒的)**
+
+Binary tree node definition 下面的代码是二叉树的定义:
+```java
+class Node {
+    public Object data;
+    public Node left;
+    public Node right;
+}
+```
+as you can see,in addition to defining the left and right children of a node,we also define a data variable to store a data.
+Let's write a piece of code to actually create a binary tree;
+可以看到我们除了定义一个节点的左孩子还有右孩子还定义了一个 data 用来存储变量,我们写一段代码,用来实际的创建一颗二叉树
+```java
+public class Main {
+    public  static  void main (String args[]) {
+       Node a = new Node(Integer.valueOf(1));
+       Node b = new Node(Integer.valueOf(2));
+       Node c = new Node(Integer.valueOf(3));
+        a.left = b;
+        a.right = c;
+}
+
+    class Node {
+        public Object data;
+        public  Node left;
+        public  Node right;
+    
+        public Node(Object d) {
+         this.data = d;
+        }
+    }
+}
+```
+
+
+
+
