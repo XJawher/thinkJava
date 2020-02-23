@@ -436,7 +436,7 @@ public class Main {
        Node c = new Node(Integer.valueOf(3));
         a.left = b;
         a.right = c;
-}
+    }
 
     class Node {
         public Object data;
@@ -458,6 +458,11 @@ if a node has child nodes,it can also be called an internal node,or a non-leaf n
 
 
 
+start make a http server,emmm ,its the simplest kind(做一个最简单的 http server)
+the first step is to start the server by use jetty to start the server.The next step is to know how to
+ start a service by yourself instead of using jetty to start the service.(第一步先把服务起起来,用 jetty 起服务,
+ 下一步就是知道怎么自己起一个服务,而不是用 jetty 去起服务)
+ 
 
 
 
