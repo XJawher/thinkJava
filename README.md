@@ -449,6 +449,14 @@ public class Main {
     }
 }
 ```
+In this way,we manually created a binary tree.if this binary tree is drawn out,it will look like this:
+![image is error connect bi hu](https://pic3.zhimg.com/80/v2-cc67304ec39051926b76c42e069ac3e6_hd.png)
+We call 1 the parent node,2 the left child node,and the 3 right child node.If a node has no child child nodes.such as 2 and 3
+in hte figure,then this node is also a leaf node
+if a node has child nodes,it can also be called an internal node,or a non-leaf node.
+我们称 1 父亲节点,2 是左孩子节点,3 是右孩子节点,如果一个节点没有子孩子节点,那么就称之为
+
+
 
 
 
